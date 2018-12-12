@@ -16,7 +16,7 @@ public class CartesianSystem {
         this.rightBorder = rightBorder;
     }
 
-    public void drawSystem(Function function) {
+    public void drawSystem(ISystem function) {
         String s = "";
         BufferedImage bufferedImage = new BufferedImage(SIZE, SIZE, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
