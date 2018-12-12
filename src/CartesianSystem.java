@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class CartesianSystem implements ISystem {
+public class CartesianSystem {
     private final int SIZE = 800;
     private final int STEP = SIZE / 20;
     private final int POINTS = 100;
@@ -16,7 +16,7 @@ public class CartesianSystem implements ISystem {
         this.rightBorder = rightBorder;
     }
 
-    public void drawSystem(int leftBorder, int rightBorder) {
+    public void drawSystem(Function function) {
         String s = "";
         BufferedImage bufferedImage = new BufferedImage(SIZE, SIZE, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
@@ -40,7 +40,7 @@ public class CartesianSystem implements ISystem {
             int [] yArray = new int[POINTS];
             for (int j = 1; j <= SIZE; ++j) {
                 xArray [j] = j;
-                yArray [j] = ;
+                yArray [j] = function.Calculate(j);
             }
         }
     }
