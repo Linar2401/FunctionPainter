@@ -1,6 +1,6 @@
 
 public class Function implements ISystem{
     public double Calculate(double x){
-        return x^2;
+        return x;
     }
 }
