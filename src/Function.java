@@ -1,6 +1,6 @@
 
-public class Function implements ISystem{
-    public double Calculate(double x){
+public class Function implements IFunction {
+    public double calculate(double x){
         return x;
     }
 }
