@@ -18,16 +18,16 @@ public class CartesianSystem {
     private BufferedImage bufferedImage;
     private Graphics2D g2d;
 
-    public CartesianSystem(int leftBorder, int sizeOfCube) {
+    public CartesianSystem(int leftBorder, int sizeOfCube,int size) {
         this.leftBorder = leftBorder;
         this.rightBorder = leftBorder+sizeOfCube;
         this.upBorder = sizeOfCube/2;
         this.downBorder = (-1)*upBorder;
-        this.size = 880;
-        this.points = (int)(size/2.5);
+        this.size = size;
+        this.points = (int)(size/2);
+        this.numbersOfStep = sizeOfCube;
 
         String s = "";
-        this.numbersOfStep = rightBorder-leftBorder;
         this.step = size /(this.numbersOfStep +2);
         this.bufferedImage = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
         this.g2d = bufferedImage.createGraphics();
@@ -54,17 +54,19 @@ public class CartesianSystem {
         }
     }
 
-    public void drawFunction(IFunction function) {
+    public void drawFunction(IFunction function,Color color) {
         double[] xArray = new double[points + 1];
         double[] yArray = new double[points + 1];
-        g2d.setColor(Color.red);
+        g2d.setColor(color);
         for (int j = 0; j <= points; j++) {
             xArray[j] = this.leftBorder + j * (float) numbersOfStep / points;
             yArray[j] = function.calculate(xArray[j]);
+            if (yArray[j] > upBorder || yArray[j] < downBorder){
+                yArray[j] = 0.0/0.0;
+            }
         }
         for (int i = 0; i < points; i++) {
-            if (Double.isNaN(yArray[i + 1]) || Double.isNaN(yArray[i]) || yArray[i] > upBorder || yArray[i+1] > upBorder
-                    || yArray[i] < downBorder || yArray[i + 1] < downBorder) {
+            if (Double.isNaN(yArray[i + 1]) || Double.isNaN(yArray[i])) {
                 continue;
             } else {
                 g2d.drawLine((int) (xArray[i] * step + (this.leftBorder * (-1) + 1) * step), (int) ((-1) * yArray[i] * step + (this.leftBorder * (-1) + 1) * step),
