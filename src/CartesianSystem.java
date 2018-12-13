@@ -8,21 +8,21 @@ import java.io.IOException;
 
 public class CartesianSystem {
     private final int SIZE = 880;
-    private int step;
     private final int POINTS = 100;
-    private int NumbersOfStep;
 
+    private int numbersOfStep;
+    private int step;
     private int leftBorder;
     private int rightBorder;
 
     public CartesianSystem(int leftBorder, int rightBorder) {
         this.leftBorder = leftBorder;
         this.rightBorder = rightBorder;
-        this.NumbersOfStep = rightBorder-leftBorder;
-        this.step = SIZE/(this.NumbersOfStep+2);
+        this.numbersOfStep = rightBorder-leftBorder;
+        this.step = SIZE/(this.numbersOfStep +2);
     }
 
-    public void drawSystem(ISystem function) {
+    public void drawFunction(IFunction function) {
         String s = "";
         BufferedImage bufferedImage = new BufferedImage(SIZE, SIZE, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
@@ -51,8 +51,8 @@ public class CartesianSystem {
             double[] yArray = new double[POINTS+1];
             g2d.setColor(Color.red);
             for (int j =0; j <= POINTS; j++ ) {
-                xArray [j] = this.leftBorder+j*(float)NumbersOfStep/POINTS;
-                yArray [j] = function.Calculate(xArray[j]);
+                xArray [j] = this.leftBorder+j*(float) numbersOfStep /POINTS;
+                yArray [j] = function.calculate(xArray[j]);
             }
             for (int i = 0; i < POINTS; i++){
                 g2d.drawLine((int)(xArray[i]* step +(this.leftBorder*(-1)+1)*step),(int)((-1)*yArray[i]* step +(this.leftBorder*(-1)+1)*step),
