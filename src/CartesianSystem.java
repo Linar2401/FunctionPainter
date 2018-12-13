@@ -18,17 +18,11 @@ public class CartesianSystem {
     private BufferedImage bufferedImage;
     private Graphics2D g2d;
 
-    public CartesianSystem(int leftBorder, int rightBorder) {
+    public CartesianSystem(int leftBorder, int sizeOfCube) {
         this.leftBorder = leftBorder;
-        this.rightBorder = rightBorder;
-        if (Math.abs(leftBorder) > Math.abs(rightBorder)){
-            this.upBorder = Math.abs(leftBorder);
-            this.downBorder = (-1)*Math.abs(rightBorder);
-        }
-        else {
-            this.upBorder = Math.abs(rightBorder);
-            this.downBorder = (-1)*Math.abs(leftBorder);
-        }
+        this.rightBorder = leftBorder+sizeOfCube;
+        this.upBorder = sizeOfCube/2;
+        this.downBorder = (-1)*upBorder;
         this.size = 880;
         this.points = (int)(size/2.5);
 
