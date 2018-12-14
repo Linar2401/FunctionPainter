@@ -134,13 +134,13 @@ public class CartesianSystem {
         }
     }
 
+
     /**
      * This method saves image
-     *
      * @param path specifies the path to image files
      * @throws IOException if can not find file of this type
      */
-    public void safe(String path) {
+    public void safe(String path) throws  IOException {
         File file = new File(path);
         try {
             ImageIO.write(bufferedImage, path.substring(path.length()-3), file);
