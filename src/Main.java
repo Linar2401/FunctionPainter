@@ -7,7 +7,7 @@ public class Main {
 
     /**
      * Program entry point.
-     *
+     * Example of using
      * @param args comand line args
      */
     public static void main(String[] args) {
