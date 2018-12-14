@@ -6,6 +6,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Class, which contains a constructor, and methods : "drawFunction", "safe".
+ */
 public class CartesianSystem {
     private int points;
     private int size;
@@ -18,6 +21,13 @@ public class CartesianSystem {
     private BufferedImage bufferedImage;
     private Graphics2D g2d;
 
+    /**
+     * This constructor draws coordinate grid
+     *
+     * @param leftBorder defines left border
+     * @param sizeOfCube defines the size of the square
+     * @param size defines the size of the coordinate grid
+     */
     public CartesianSystem(int leftBorder, int sizeOfCube, int size) {
         this.leftBorder = leftBorder;
         this.rightBorder = leftBorder + sizeOfCube;
@@ -60,6 +70,12 @@ public class CartesianSystem {
         }
     }
 
+    /**
+     * This method draws graph by x and y coordinates
+     *
+     * @param function functional interface
+     * @param color defines graph color
+     */
     public void drawFunction(IFunction function, Color color) {
         double[] xArray = new double[points + 1];
         double[] yArray = new double[points + 1];
@@ -84,6 +100,13 @@ public class CartesianSystem {
         }
     }
 
+    /**
+     * This method saves image
+     *
+     * @param path specifies the path to image files
+     * @param format defines the format of the graphic file
+     * @throws IOException if can not find file of this type
+     */
     public void safe(String path, String format) {
         File file = new File(path);
         try {
