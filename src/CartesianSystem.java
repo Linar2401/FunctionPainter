@@ -7,18 +7,52 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * @author Linar Zagidullin <linar240100@gmail.com>
+ * @author Zagit Dingizbaev
+ * @author Arslan Ariphullin
+ * @version 0.5
  * Class, which contains a constructor, and methods : "drawFunction", "safe".
  */
 public class CartesianSystem {
+    /**
+     * the number of points substituted by the function
+     */
     private int points;
+    /**
+     * size of image in pixels
+     */
     private int size;
+    /**
+     * required variable for accurate markup
+     */
     private int numbersOfStep;
+    /**
+     * Size of cell in pixels
+     */
     private int step;
+    /**
+     * left border of graph
+     */
     private int leftBorder;
+    /**
+     * right border of graph
+     */
     private int rightBorder;
+    /**
+     * upper border of graph
+     */
     private int upBorder;
+    /**
+     * lower  border of graph
+     */
     private int downBorder;
+    /**
+     * BufferedImage variable
+     */
     private BufferedImage bufferedImage;
+    /**
+     * canvas of graph
+     */
     private Graphics2D g2d;
 
     /**
@@ -100,17 +134,16 @@ public class CartesianSystem {
         }
     }
 
+
     /**
      * This method saves image
-     *
      * @param path specifies the path to image files
-     * @param format defines the format of the graphic file
      * @throws IOException if can not find file of this type
      */
-    public void safe(String path, String format) {
+    public void safe(String path) throws  IOException {
         File file = new File(path);
         try {
-            ImageIO.write(bufferedImage, format, file);
+            ImageIO.write(bufferedImage, path.substring(path.length()-3), file);
         } catch (IOException e) {
             System.out.println("ImageIO.write error" + e.getMessage());
         }
